@@ -38,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Meals',
           ),
           NavigationDestination(
-            icon: Icon(Icons.pie_chart_outlined),
+            icon: Icon(Icons.pie_chart_outline),
             selectedIcon: Icon(Icons.pie_chart),
             label: 'Macros',
           ),
