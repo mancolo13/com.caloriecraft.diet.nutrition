@@ -12,21 +12,46 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _idx = 0;
-  final _tabs = const [Tab1Screen(), Tab2Screen(), Tab3Screen(), Tab4Screen()];
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = const [
+    Tab1Screen(),
+    Tab2Screen(),
+    Tab3Screen(),
+    Tab4Screen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(index: _idx, children: _tabs),
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _screens,
+      ),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: _idx,
-        onDestinationSelected: (i) => setState(() => _idx = i),
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (index) => setState(() => _currentIndex = index),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.restaurant_menu_outlined), selectedIcon: Icon(Icons.restaurant_menu), label: 'Meals'),
-          NavigationDestination(icon: Icon(Icons.pie_chart_outline), selectedIcon: Icon(Icons.pie_chart), label: 'Macros'),
-          NavigationDestination(icon: Icon(Icons.local_dining_outlined), selectedIcon: Icon(Icons.local_dining), label: 'Foods'),
-          NavigationDestination(icon: Icon(Icons.track_changes_outlined), selectedIcon: Icon(Icons.track_changes), label: 'Targets'),
+          NavigationDestination(
+            icon: Icon(Icons.restaurant_menu_outlined),
+            selectedIcon: Icon(Icons.restaurant_menu),
+            label: 'Meals',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.pie_chart_outlined),
+            selectedIcon: Icon(Icons.pie_chart),
+            label: 'Macros',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.inventory_2_outlined),
+            selectedIcon: Icon(Icons.inventory_2),
+            label: 'Foods',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.track_changes_outlined),
+            selectedIcon: Icon(Icons.track_changes),
+            label: 'Targets',
+          ),
         ],
       ),
     );
